@@ -25,7 +25,7 @@ export default class MainRouter {
     this.router.route("/u/:shortenedUrl").get(this.shortenedUrlController.get);
 
     this.router
-      .route("/urls")
+      .route("/api/urls")
       .get(this.shortenedUrlController.getAll)
       .post(this.shortenedUrlController.create);
   }
