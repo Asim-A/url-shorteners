@@ -7,7 +7,7 @@ dotenv.config();
 
 export class UrlShortnerController {
   private _url: string = "localhost:3000/u";
-  private _baseSize: number = 6;
+  private _baseSize: number = 4;
   private _base64Chars: string[] =
     "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
 
@@ -37,7 +37,8 @@ export class UrlShortnerController {
       where: { shortenedUrlSuffix },
     }).then((entity: UrlInterface | null) => {
       if (entity) {
-        res.json(entity);
+        const { actualUrl } = entity;
+        res.redirect(actualUrl);
       } else {
         res.status(204).send();
       }
